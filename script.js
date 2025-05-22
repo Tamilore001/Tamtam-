@@ -1,13 +1,8 @@
-// dashboard.js
-
-// Three demo customers with initial empty balances and empty history
 const customers = [
   { name: 'Tammy', balance: 3000, history: [] },
   { name: 'Tyrese', balance: 400, history: [] },
   { name: 'Haliburton', balance: 10000, history: [] },
 ];
-
-// Grab DOM elements
 const balanceDisplay = document.getElementById('balance');
 const historyList = document.getElementById('historyList');
 
@@ -28,8 +23,6 @@ const airtimeBtn = document.getElementById('airtimeBtn');
 const betBtn = document.getElementById('betBtn');
 
 let currentUserIndex = null;
-
-// Load logged in user from localStorage
 function loadUser() {
   const savedIndex = localStorage.getItem('loggedInUser');
   if (savedIndex === null) {
@@ -40,15 +33,10 @@ function loadUser() {
   currentUserIndex = Number(savedIndex);
   renderUserData();
 }
-
-// Render user data on dashboard
 function renderUserData() {
   const user = customers[currentUserIndex];
   balanceDisplay.textContent = user.balance.toFixed(2);
-
-  // Clear history
   historyList.innerHTML = '';
-  // Add history items
   user.history.slice().reverse().forEach(item => {
     const li = document.createElement('li');
     li.textContent = `${item.label}: ₦${item.amount.toFixed(2)}`;
@@ -59,16 +47,12 @@ function renderUserData() {
   clearErrors();
   clearInputs();
 }
-
-// Clear input fields
 function clearInputs() {
   creditAmountInput.value = '';
   debitAmountInput.value = '';
   airtimeAmountInput.value = '';
   betAmountInput.value = '';
 }
-
-// Clear error messages
 function clearErrors() {
   creditError.textContent = '';
   debitError.textContent = '';
@@ -76,7 +60,6 @@ function clearErrors() {
   betError.textContent = '';
 }
 
-// Add transaction to user history and update balance
 function addTransaction(type, amount, label) {
   const user = customers[currentUserIndex];
   if (type === 'credit') {
@@ -88,7 +71,6 @@ function addTransaction(type, amount, label) {
   renderUserData();
 }
 
-// Validate input amount (positive number)
 function validateAmount(amount, errorElement, errorMessage) {
   if (isNaN(amount) || amount <= 0) {
     errorElement.textContent = errorMessage;
@@ -97,7 +79,6 @@ function validateAmount(amount, errorElement, errorMessage) {
   return true;
 }
 
-// Transaction handlers
 creditBtn.addEventListener('click', function() {
   clearErrors();
   const amount = Number(creditAmountInput.value);
@@ -141,7 +122,6 @@ betBtn.addEventListener('click', function() {
   addTransaction('debit', amount, 'Betting');
 });
 
-// Logout handler
 logoutBtn.addEventListener('click', function() {
   localStorage.removeItem('loggedInUser');
   window.location.href = 'index.html';
