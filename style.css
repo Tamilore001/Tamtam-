@@ -1,0 +1,106 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  margin: 0;
+  padding: 1rem;
+  min-height: 100vh;
+}
+
+.page-center {
+  max-width: 400px;
+  margin: auto;
+  background: white;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+label, select, input {
+  display: block;
+  width: 100%;
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+button {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  width: 100%;
+  cursor: pointer;
+  background: #007bff;
+  border: none;
+  color: white;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+.logo {
+  max-width: 100px;
+  display: block;
+  margin: 0 auto 10px auto;
+}
+
+.balance {
+  font-size: 1.2rem;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.transaction-group {
+  margin-bottom: 1rem;
+}
+
+.transaction-group input {
+  width: 70%;
+  display: inline-block;
+  padding: 0.3rem;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.transaction-group button {
+  width: 28%;
+  display: inline-block;
+  margin-left: 2%;
+  padding: 0.4rem;
+}
+
+.error-msg {
+  color: red;
+  font-size: 0.85rem;
+  height: 18px;
+  margin-top: 3px;
+}
+
+ul.history {
+  list-style: none;
+  padding-left: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background: #fafafa;
+}
+
+ul.history li {
+  padding: 6px 10px;
+  border-bottom: 1px solid #eee;
+}
+
+ul.history li.credit {
+  color: green;
+}
+
+ul.history li.debit {
+  color: red;
+}
